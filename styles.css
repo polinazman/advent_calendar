@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F0ECE3;
+    text-align: center;
+}
+
+h1, h2 {
+text-align: center;
+font-family: "Quantico", sans-serif;
+font-weight: 400;
+}
+
+.text-content {
+    margin: 40px 10%;
+    text-align: left;
+}
+
+.calendar {
+    width: 800px;
+    margin: 15px auto;
+    padding: 10px 20px 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+        "door6 door13 door10 door17"
+        "door2 door21 door4 door15"
+        "door24 door18 door9 door3"
+        "door12 door1 door20 door7"
+        "door19 door23 door14 door22"
+        "door8 door16 door5 door11";
+}
+
+.door {
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+}
+
+.door-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s;
+}
+
+.door-front {
+    height: 100%;
+    width: 100%;
+    font-family: 'Quantico', sans-serif;
+    font-weight: 400;
+    padding: 10px;
+    border: 2px solid #000;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 4rem;
+    backface-visibility: hidden;
+}
+
+.c1 .door-front {
+    background-color: #F0ECE3;
+    color: #015D8E;
+}
+
+.c2 .door-front {
+    background-color: #986E34;
+    color: #F0ECE3;
+}
+.c3 .door-front {
+    background-color: #3F664B;
+    color: #F0ECE3;
+}
+.c4 .door-front {
+    background-color: #015D8E;
+    color: #F0ECE3;
+}
+.door-back {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ddd;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+}
+
+.door-back a {
+    font-family: 'Quantico', sans-serif;
+    font-weight: 400;
+    font-size: 4rem;
+    color: #333;
+    text-decoration: none;
+    rotate: 180deg;
+}
+
+.door.flipped .door-inner {
+    transform: rotateY(180deg);
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.door.locked .door-inner {
+    animation: shake 0.4s ease;
+}
+
+@media (max-width: 600px) {
+    .calendar {
+        width: 100%;
+    }
+    .door-front, .door-back a {
+        font-size: 2rem;
+    }
+}
