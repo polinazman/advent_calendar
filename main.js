@@ -1,4 +1,3 @@
-// const calendarButton = document.querySelector(".btn-start");
 const calendarContainer = document.querySelector(".calendar");
 
 const calendarDays = 24;
@@ -58,31 +57,21 @@ for(let i = 0; i < calendarDays; i++) {
         doorWrapper.addEventListener("mouseover",() => {
                 if (currentDate <= today) {
                         doorWrapper.classList.toggle("flipped");    
-                } else {
-                        doorWrapper.classList.add("locked");
-
-                        setTimeout(() => {
-                                doorWrapper.classList.remove("locked");
-                        }, 500);
                 }
-               
         });
 
-      /*  const calendarDoor = document.createElement("div");
-        const calendarDoorText = document.createElement("div");
-        const calendarDoorLink = document.createElement('a');
+        doorWrapper.addEventListener("mouseout", () => {
+                if (currentDate <= today) {
+                        doorWrapper.classList.remove("flipped");
+                }
+        });
 
-        calendarDoor.classList.add("content")
-        calendarDoor.style.gridArea = "door" + (i + 1);
-        calendarContainer.appendChild(calendarDoor);
-
-        calendarDoorText.classList.add("text");
-        calendarDoorText.innerHTML = i + 1;
-        calendarDoor.appendChild(calendarDoorText);
-
-        calendarDoorLink.classList.add("link");
-        calendarDoorLink.setAttribute("href", './pages/day' + currentDate + ".html");
-        calendarDoorLink.innerHTML = currentDate + ".html";
-        calendarDoor.appendChild(calendarDoorLink);
-        */
+        doorWrapper.addEventListener("click", () => {
+                if (currentDate > today) {
+                        doorWrapper.classList.add("locked");
+                        setTimeout(() => {
+                                doorWrapper.classList.remove("locked");
+                }, 500);
+                }
+        });
 }
